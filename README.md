@@ -1,39 +1,24 @@
-# <h1 align="center"> Forge Template </h1>
+# foundry-safe-script
 
-**Template repository for getting started quickly with Foundry projects**
+A simple foundry script to deploy a Gnosis Safe to 
 
-![Github Actions](https://github.com/foundry-rs/forge-template/workflows/CI/badge.svg)
-
-## Getting Started
-
-Click "Use this template" on [GitHub](https://github.com/foundry-rs/forge-template) to create a new repository with this repo as the initial state.
-
-Or, if your repo already exists, run:
-```sh
-forge init
-forge build
-forge test
+```
+forge script contracts/GnosisDeployer.s.sol --sig "run()" --broadcast --fork-url $YOUR_RPC_HERE -t --sender $YOUR_SENDER_HERE --verify
 ```
 
-## Writing your first test
+## Instructions
 
-All you need is to `import forge-std/Test.sol` and then inherit it from your test contract. Forge-std's Test contract comes with a pre-instatiated [cheatcodes environment](https://book.getfoundry.sh/cheatcodes/), the `vm`. It also has support for [ds-test](https://book.getfoundry.sh/reference/ds-test.html)-style logs and assertions. Finally, it supports Hardhat's [console.log](https://github.com/brockelmore/forge-std/blob/master/src/console.sol). The logging functionalities require `-vvvv`.
+1. Change the owners threshold
+
+   
+```solidity
+address[] internal owners = new address[](1);
+```
+
+2. Set the owners of your choice
 
 ```solidity
-pragma solidity 0.8.10;
-
-import "forge-std/Test.sol";
-
-contract ContractTest is Test {
-    function testExample() public {
-        vm.roll(100);
-        console.log(1);
-        emit log("hi");
-        assertTrue(true);
-    }
-}
+owners[0] = address(0x0000000000000000000000000000000000000001);
+owners[1] = address(0x0000000000000000000000000000000000000002);
+owners[2] = address(0x0000000000000000000000000000000000000003);
 ```
-
-## Development
-
-This project uses [Foundry](https://getfoundry.sh). See the [book](https://book.getfoundry.sh/getting-started/installation.html) for instructions on how to install and use Foundry.
