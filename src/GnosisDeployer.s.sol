@@ -24,6 +24,7 @@ contract GnosisScript is Script {
 
     function run() external {
         uint256 NONCE = 420;
+        uint256 THRESHHOLD = 1;
         owners[0] = address(0xA5A7468f177d94212cd0FDC0886EE732155c47e9);
 
         GnosisSafeProxyFactory factory = GnosisSafeProxyFactory(
@@ -37,7 +38,7 @@ contract GnosisScript is Script {
                 abi.encodeWithSignature(
                     "setup(address[],uint256,address,bytes,address,address,uint256,address)",
                     owners,
-                    1,
+                    THRESHHOLD,
                     address(0),
                     "",
                     GNOSIS_COMPATIBILITY_FALLBACK_HANDLER,
@@ -54,7 +55,7 @@ contract GnosisScript is Script {
                 abi.encodeWithSignature(
                     "setup(address[],uint256,address,bytes,address,address,uint256,address)",
                     owners,
-                    1,
+                    THRESHHOLD,
                     address(0),
                     "",
                     GNOSIS_COMPATIBILITY_FALLBACK_HANDLER,
