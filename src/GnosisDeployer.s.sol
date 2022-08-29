@@ -23,6 +23,7 @@ contract GnosisScript is Script {
     GnosisSafeL2 public safeL2;
 
     function run() external {
+        uint256 NONCE = 420;
         owners[0] = address(0xA5A7468f177d94212cd0FDC0886EE732155c47e9);
 
         GnosisSafeProxyFactory factory = GnosisSafeProxyFactory(
@@ -44,7 +45,7 @@ contract GnosisScript is Script {
                     0,
                     0
                 ),
-                123
+                NONCE
             );
             safe = GnosisSafe(payable(address(proxy)));
         } else {
@@ -61,7 +62,7 @@ contract GnosisScript is Script {
                     0,
                     0
                 ),
-                123323
+                NONCE
             );
             safeL2 = GnosisSafeL2(payable(address(proxy)));
         }
