@@ -3,8 +3,7 @@
 A simple foundry script to deploy a Gnosis Safe to 
 
 ```
-forge install
-forge script contracts/GnosisDeployer.s.sol --sig "run()" --broadcast --fork-url $YOUR_RPC_HERE -t --sender $YOUR_SENDER_HERE --verify
+forge script src/GnosisDeployer.s.sol --sig "run()" --broadcast --fork-url $YOUR_RPC_HERE -t --sender $YOUR_SENDER_HERE --verify
 ```
 
 ## Instructions
